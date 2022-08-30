@@ -1,0 +1,12 @@
+{
+  "name": "nodejs-jwt-token-authentication-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "env-cmd -f ./.env nodemon index.js"
+  },
+  "dependencies": {
+    "ethers": "^5.7.0",
+    "nodemon": "^2.0.19"
+  }
+}
