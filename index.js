@@ -8,6 +8,7 @@ module.exports.run = async () => {
         const tokenUri = await contract.tokenURI(ethers.BigNumber.from(token).toNumber())
         await fetch(`https://u6i3kt6ir7.execute-api.eu-west-3.amazonaws.com/dev/handleTransferEvent`, {
             method: "POST",
+            "Content-Type":"application/json",
             "body": JSON.stringify({
                 from,
                 to,
