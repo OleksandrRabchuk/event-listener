@@ -3,7 +3,7 @@ const contractAbi = require("./abi.json");
 const fetch = require('node-fetch');
 
 (async () => {
-    const provider = ethers.getDefaultProvider('goerli')
+    const provider = new ethers.providers.AlchemyProvider('goerli', 'Exs46ULpQ51iFcHpidgBjDuT2B40jDXc')
     const contract = new ethers.Contract('0xad464BCBdF3C9d835364be22B45A696B2440c7c0', contractAbi, provider)
     console.log('Server running');
     contract.on('Transfer', async (from, to, token) => {
