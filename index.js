@@ -9,7 +9,7 @@ const fetch = require('node-fetch');
     contract.on('Transfer', async (from, to, token) => {
         console.log((from, to, token))
         const tokenUri = await contract.tokenURI(ethers.BigNumber.from(token).toNumber())
-        const res = await fetch(`https://czzeocbspa.execute-api.eu-west-3.amazonaws.com/handleTransferEvent`, {
+        const res = await fetch(`https://k3xd8u9v59.execute-api.eu-west-3.amazonaws.com/handleTransferEvent`, {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
