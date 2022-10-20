@@ -3,13 +3,11 @@ const contractAbi = require("./abi.json");
 const fetch = require('node-fetch');
 
 (async () => {
-    const provider = new ethers.providers.AlchemyProvider('goerli', 'Exs46ULpQ51iFcHpidgBjDuT2B40jDXc')
-    const contract = new ethers.Contract('0xad464BCBdF3C9d835364be22B45A696B2440c7c0', contractAbi, provider)
-    console.log('Server running');
+    const provider = new ethers.providers.AlchemyProvider('homestead', 'xPXwiz9sef2wP9VAprruRIqP-o9n0W3s')
+    const contract = new ethers.Contract('0x9F83b08D90eeDa539f7E2797fEd3f6996917BbA8', contractAbi, provider)
     contract.on('Transfer', async (from, to, token) => {
-        console.log((from, to, token))
         const tokenUri = await contract.tokenURI(ethers.BigNumber.from(token).toNumber())
-        const res = await fetch(`https://k3xd8u9v59.execute-api.eu-west-3.amazonaws.com/handleTransferEvent`, {
+        await fetch(`https://8cyq9zjqx7.execute-api.us-east-2.amazonaws.com/handleTransferEvent`, {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -19,7 +17,6 @@ const fetch = require('node-fetch');
                 tokenUri,
             })
         })
-        console.log(res)
     })
 
 })()
